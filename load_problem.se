@@ -1,0 +1,12 @@
+data stuff[]
+
+def load_stuff():
+    mystuff = array(2)
+    mystuff[0] = 4
+    mystuff[1] = 5
+
+    save(self.stuff[0], mystuff, items=2)
+    stuff = load(self.stuff[0], items=2)
+
+    # returns [4, 0] to pyethereum tester instead of [4, 5]
+    return(stuff: arr)

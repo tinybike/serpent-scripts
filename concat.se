@@ -1,0 +1,15 @@
+def concat():
+    t = text("i'm a long text variable! lololololololololololololol")
+    textlen = len(t)
+    a = array(textlen + 2)
+    a[0] = tx.origin
+    a[1] = msg.gas
+    i = 0
+    while i < textlen:
+        a[i + 2] = getch(t, i)
+        i += 1
+    return(a: arr)
+
+def shortstring():
+    s = "i'm a"
+    return(s)

@@ -1,0 +1,52 @@
+def createEvent(branch, description:str, expDate, minValue, maxValue, numOutcomes):
+    # eventinfo = string(8*32 + len(description))
+    # eventinfo[0] = EVENT                                        #typecode
+    # eventinfo[1] = branch                                       #branchID
+    # eventinfo[2] = expDate                                      #expiration date
+    # eventinfo[3] = tx.origin                                    #creator address
+    # eventinfo[4] = 42*2^64                                      #creation fee
+    # eventinfo[5] = minValue                                     #minimum outcome value
+    # eventinfo[6] = maxValue                                     #maximum outcome value
+    # eventinfo[7] = numOutcomes                                  #number of outcomes
+    # mcopy(eventinfo + 8*32, description, len(description))
+    # eventID = sha256(eventinfo, chars=len(eventinfo))
+    # eventID = sha256(description, chars=len(description))
+    eventID = sha256(description:str)
+    return(eventID)
+    # desc = array(len(description))
+    # c = 0
+    # while c < len(description):
+    #     desc[c] = getch(description, c)
+    #     c += 1
+    # return(description:str)
+    # return(desc:arr)
+
+def createMarket(branch, description:str, alpha, initialLiquidity, tradingFee, events:arr):
+    # event = events[0]
+
+    # check that events have same exp. dates && branch
+    i = 0
+    eventNum = len(events)
+    numOutcomes = 2
+    # event = events[i]
+    event = 0xa4603384f73c741ba7bc5249e106009d55653ffcbbf27ceede8cc980770341d2
+    eventsConcat += event
+    cumulativeScale = 120
+    tradingPeriod = 1054
+
+    # formation of marketID (hash)
+    marketinfo = string(11*32 + len(description))
+    marketinfo[0] = MARKET
+    marketinfo[1] = tx.origin
+    marketinfo[2] = initialLiquidity
+    marketinfo[3] = branch
+    marketinfo[4] = eventsConcat
+    marketinfo[5] = 1
+    marketinfo[6] = cumulativeScale
+    marketinfo[7] = alpha
+    marketinfo[8] = numOutcomes
+    marketinfo[9] = tradingPeriod
+    marketinfo[10] = tradingFee
+    mcopy(marketinfo + 11*32, description, chars=len(description))
+    marketID = sha256(marketinfo, chars=len(marketinfo))
+    return(marketID)

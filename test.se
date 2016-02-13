@@ -1,0 +1,41 @@
+data stuff[](otherstuff[], numStuff)
+
+event stdout(data)
+
+# prints an array to stdout
+# $a: array
+# $n: array length
+macro log_array($a, $n):
+    with $i = 0:
+        while $i < $n:
+            log(type=stdout, $a[$i])
+            $i += 1
+
+# print to stdout
+macro print($x):
+    log(type=stdout, $x)
+
+# loads an array from contract data
+# $a: array
+# $n: array length
+macro fetch($a, $n):
+    with $memarray = array($n):
+        with $i = 0:
+            while $i < $n:
+                $memarray[$i] = $a[$i]
+                $i += 1
+            $memarray
+
+def start():
+    self.stuff[0].otherstuff[0] = 4
+    self.stuff[0].otherstuff[1] = 5
+    self.stuff[0].numStuff = 2
+    return(1)
+
+def getStuff(id):
+    stuff = fetch(self.stuff[id].otherstuff, self.stuff[id].numStuff)
+    # stuff = load(self.stuff[id].otherstuff[0], items=2)
+    return(stuff: arr)
+
+def woah():
+    return(self.stuff[0].otherstuff[1])
