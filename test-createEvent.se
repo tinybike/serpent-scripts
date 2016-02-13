@@ -1,3 +1,19 @@
+def createSubbranch(description:str, periodLength, parent, tradingFee, oracleOnly):
+    parentPeriod = 100
+    blockNumber = 9309
+    branchInfo = string(8*32+len(description))
+    branchInfo[0] = BRANCH                                      #typecode
+    branchInfo[1] = tx.origin                                   #creator address
+    branchInfo[2] = 47*2^64                                     #creation fee
+    branchInfo[3] = periodLength                                #length of voting cycle
+    branchInfo[4] = blockNumber                                 #current block number
+    branchInfo[5] = parent                                      #branchID of parent branch
+    branchInfo[6] = tradingFee
+    branchInfo[7] = oracleOnly
+    mcopy(branchInfo+ 8*32, description, len(description))
+    branchID = sha256(branchInfo, chars=len(branchInfo))
+    return(branchID)
+
 def createEvent(branch, description:str, expDate, minValue, maxValue, numOutcomes):
     # eventinfo = string(8*32 + len(description))
     # eventinfo[0] = EVENT                                        #typecode
