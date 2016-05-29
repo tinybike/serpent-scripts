@@ -21,16 +21,18 @@ result = run(c, "concat")
 
 print bin2ascii(result[2:])
 
-# def profile(contract, fn, *args, **kwargs):
-#     result = getattr(contract, fn)(*args, profiling=True)
-#     print("\nProfile:")
-#     print(" %i gas (%s seconds)\n" % (result['gas'], result['time']))
-#     return result['output']
+def profile(contract, fn, *args, **kwargs):
+    result = getattr(contract, fn)(*args, profiling=True)
+    print("\nProfile:")
+    print(" %i gas (%s seconds)\n" % (result['gas'], result['time']))
+    return result['output']
 
 # result = profile(c, "concat")
 # print "concat():", result
 # print ''.join(map(chr, result[2:])) # convert to ASCII
 
 # short string
-# result = profile(c, "shortstring")
-# print "shortstring():", hex(result)[2:-1], hex(result)[2:-1].decode("hex")
+# sstr = "i'm a"
+# print "short string:", sstr, sstr.encode("hex") 
+result = profile(c, "shortstring")
+print "shortstring():", result, hex(result)[2:-1], hex(result)[2:-1].decode("hex")

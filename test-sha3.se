@@ -1,0 +1,23 @@
+def makeMarketID():
+    # description = text("Will the average temperature on Earth in 2016 be Higher, Lower, or Unchanged from the average temperature on Earth in 2014?")
+    description = text("test")
+    marketInfo = string(8*32 + len(description))
+    marketInfo[0] = 0
+    marketInfo[1] = 0x0f69b5
+    marketInfo[2] = 1898028
+    marketInfo[3] = 0x82a978b3f5962a5b0957d9ee9eef472ee55b42f1
+    marketInfo[4] = 0x2a0000000000000000
+    marketInfo[5] = 0
+    marketInfo[6] = 120
+    marketInfo[7] = 2
+    # marketInfo[0] = 0x1708aec800
+    # marketInfo[1] = 0x51eb851eb851eb8
+    # marketInfo[2] = 0x574aad9e
+    # marketInfo[3] = 0x7765617468657200000000000000000000000000000000000000000000000000
+    # marketInfo[4] = 0x74656d7065726174757265000000000000000000000000000000000000000000
+    # marketInfo[5] = 0x636c696d617465206368616e6765000000000000000000000000000000000000
+    # marketInfo[6] = 0x159823db800
+    # marketInfo[7] = len(description)
+    mcopy(marketInfo + 8*32, description, chars=len(description))
+    marketID = sha3(marketInfo, chars=len(marketInfo))
+    return marketID
