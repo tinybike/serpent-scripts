@@ -22,3 +22,6 @@ def makeMarketID():
     #     marketInfo[index + c] = getch(description, c)
     #     c += 1
     # return(marketInfo: arr)
+
+def testSha3(x):
+    return(sha3(x))
