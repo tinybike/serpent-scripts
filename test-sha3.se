@@ -1,8 +1,8 @@
+def testSha3(x):
+    return(sha3(x))
+
 def makeMarketID():
-    # description = text("Will the average temperature on Earth in 2016 be Higher, Lower, or Unchanged from the average temperature on Earth in 2014?")
-    # description = text("为什么有这么严重吗？")
-    description = text("为什么..!!...,.!.有这么严重吗？")
-    # description = text("なぜこれほど深刻な？")
+    description = text("なぜそんなに真剣なんだ？ €☃...")
     marketInfo = string(8*32 + len(description))
     marketInfo[0] = 0x5e58d00
     marketInfo[1] = 0x51eb851eb851eb8
@@ -14,7 +14,33 @@ def makeMarketID():
     marketInfo[7] = len(description)
     mcopy(marketInfo + 8*32, description, chars=len(description))
     return sha3(marketInfo, chars=len(marketInfo))
-    # return len(description)
+
+    # description = text("What will the high temperature (in degrees Fahrenheit) be in San Francisco, California, on July 1, 2016?")
+    # x = string(8*32 + len(description))
+    # x[0] = 0
+    # x[1] = 0xf69b5
+    # x[2] = 1898028
+    # x[3] = 0x82a978b3f5962a5b0957d9ee9eef472ee55b42f1
+    # x[4] = 0x246ddf97976680000
+    # x[5] = 0
+    # x[6] = 120
+    # x[7] = 2
+    # mcopy(x + 8*32, description, chars=len(description))
+    # return sha3(x, chars=len(x))
+
+    # x = array(8)
+    # x[0] = 0
+    # x[1] = 0xf69b5
+    # x[2] = 1898028
+    # x[3] = 0x82a978b3f5962a5b0957d9ee9eef472ee55b42f1
+    # x[4] = 0x246ddf97976680000
+    # x[5] = 0
+    # x[6] = 120
+    # x[7] = 2
+    # return(sha3(x, items=8))
+
+    # x = text("为什么那么认真？")
+    # return(sha3(x, chars=len(x)))
 
     # marketInfo = array(len(description))
     # c = 0
@@ -22,6 +48,3 @@ def makeMarketID():
     #     marketInfo[index + c] = getch(description, c)
     #     c += 1
     # return(marketInfo: arr)
-
-def testSha3(x):
-    return(sha3(x))
