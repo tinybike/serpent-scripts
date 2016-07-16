@@ -1,5 +1,18 @@
+macro abs($a):
+    if($a<0):
+        $a = -$a
+    $a
+
 def testSha3(x):
     return(sha3(x))
+
+def testThresholdValue():
+    sender = 0x7c0d52faab596c08f484e3478aebc6205f3f5d8c
+    eventID = 0x40d5721c8081ff45779dbf4d2061bcacfd40061f7f4e2fdf8aa5512d88260198
+    shaHash = sha3(sender + eventID)
+    shaHashAbs = abs(shaHash) / 10^18
+    shaHash = 2*shaHashAbs
+    return(shaHash)
 
 def makeMarketID():
     description = text("なぜそんなに真剣なんだ？ €☃...")
