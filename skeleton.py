@@ -9,12 +9,18 @@ def hexify(x):
 
 s = t.state()
 c = s.abi_contract("""
+event arrayReturnValue(returnArray: arr)
+
 macro ONE: 10^18
 
 macro abs($a):
     if($a<0):
         $a = -$a
     $a
+
+macro logArrayReturn($a):
+    log(type=arrayReturnValue, $a)
+    return($a: arr)
 
 def foo():
     x = array(3)
@@ -41,7 +47,12 @@ def shaHash():
     s = sha3(s)
     s = abs(s) / 115792089237316195423571
     return(s)
+
+def loggington():
+    logArrayReturn([1, 3, 3, 7])
+
 """)
 
 print(hexify(c.foo()))
 print(hexify(c.makeTradeHash(1, 0, [-0x4a79aafd3b316a3e02ae87368a79c2262bedc9c6cb58f8d05b452f6ce6f38796])))
+print(c.loggington())
