@@ -51,8 +51,12 @@ def shaHash():
 def loggington():
     logArrayReturn([1, 3, 3, 7])
 
+def bar(x):
+    return(!x)
 """)
 
+print(c.bar(0))
+print(c.bar(1))
 print(hexify(c.foo()))
 print(hexify(c.makeTradeHash(1, 0, [-0x4a79aafd3b316a3e02ae87368a79c2262bedc9c6cb58f8d05b452f6ce6f38796])))
 print(c.loggington())
