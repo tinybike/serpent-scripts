@@ -9,6 +9,8 @@ def hexify(x):
 
 s = t.state()
 c = s.abi_contract("""
+data Info[](description[2048], descriptionLength, creator, creationFee)
+
 event arrayReturnValue(returnArray: arr)
 
 macro ONE: 10^18
@@ -58,6 +60,16 @@ def arrtest():
     x = array(31)
     x[0] = 2
     return(x: arr)
+
+def setInfo(ID, description: str, creator, fee):
+    if(self.Info[ID].creator == 0):
+        save(self.Info[ID].description[0], description, chars=len(description))
+        self.Info[ID].descriptionLength = len(description)
+        self.Info[ID].creationFee = fee
+        self.Info[ID].creator = creator
+        return(1)
+    else:
+        return(0)
 
 """)
 
